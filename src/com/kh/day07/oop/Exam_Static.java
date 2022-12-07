@@ -25,6 +25,7 @@ public class Exam_Static {
 		StaticSample s1;
 		s1 = new StaticSample();
 		System.out.println(s1.input);
+		
 		s1.originMethod();
 		System.out.println(s1.input);
 		
