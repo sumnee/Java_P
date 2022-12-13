@@ -10,7 +10,7 @@ public class Exam_ReadCharOff {
 	public static void main(String[] args) {
 		Reader reader = null;
 		
-		try {
+		try {		
 			
 			reader = new FileReader("src/filereader.txt");
 			char cbuf[] = new char[2];
