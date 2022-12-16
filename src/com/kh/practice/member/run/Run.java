@@ -22,32 +22,44 @@ public class Run {
 				break;
 				
 			case 2 : 
-				String memberId = view.inputMemberId();
-				int index = mc.findMemberId(memberId);
-				if(index == -1 ) {
-					System.out.println("해당 ID의 회원이 없습니다.");
+				String memberId = view.inputMemberId("검색");
+				Member mOne = mc.findMemberId(memberId);
+				if(mOne == null) {
+					// 없습니다 메시지 출력
 				}
-				Member mOne = mc.printOneByIndex(index);
-				view.printOneById(mOne);
+//				int index = mCon.findMemberId(memberId);
+//				if(index == -1) {
+//					view.displayError("해당 아이디의 회원이 없습니다.");
+//				}
+//				Member mOne = mCon.printOneByIndex(index);
+				view.showOneMember(mOne);
 				break;
 				
 			case 3 : 
-				String memberName = view.inputMemberName();
-				int index2 = mc.findMemberName(memberName);
-				if(index2 == -1 ) {
-					System.out.println("해당 이름의 회원이 없습니다.");
-				}
-				Member mOne2 = mc.printOneByName(index2);
-				view.printOneByName(mOne2);
+				String memberName = view.inputMemberName("검색");
+				Member memOne = mc.findMemberName(memberName);
+				view.showOneMember(memOne);
 				break;
 				
 			case 4 : 
 				Member member = view.inputMember();
 				mc.resisterMember(member);
+				view.displaySuccess("가입이 완료되었습니다.");
 				break;
 				
-			case 5 : break;
-			case 6 : break;
+			case 5 :
+				member = view.modifyMember();
+				mc.updateMember(member);
+				view.displaySuccess("수정이 완료되었습니다.");
+				break;
+			
+			case 6 : 
+				memberId = view.inputMemberId("삭제");
+				int index = mc.findMemberIndex(memberId);
+				mc.removeMember(index);
+				view.displaySuccess("계정이 삭제되었습니다.");
+				break;
+				
 			case 0 : break EXIT;
 			default : break;
 			}
