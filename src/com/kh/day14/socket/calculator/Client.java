@@ -41,7 +41,7 @@ public class Client {
 						break;
 					}
 				String result = dis.readUTF();
-					if(result.equalsIgnoreCase("end")) {
+					if(result.equals("end")) {
 						System.out.println("형식에 맞게 입력하세요.");
 						continue;
 					}

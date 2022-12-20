@@ -48,8 +48,22 @@ public class MusicController {
 	}
 	
 	/**
+	 * 이름으로 음악 목록 검색
+	 * @param title
+	 */
+	public List<Music> searchMusicsByName(String title) {
+		List<Music> findList = new ArrayList<Music>();
+		for(Music mOne : mList) {
+			if(mOne.getTitle().equals(title)) {
+				findList.add(mOne);
+			}
+		}
+		return findList;
+	}
+	
+	/**
 	 * 이름으로 인덱스 조회
-	 * @param music
+	 * @param musicName
 	 */
 	public int searchOneByName(String musicName) {
 		for(int i=0;i<mList.size();i++) {
@@ -77,4 +91,86 @@ public class MusicController {
 	public List<Music> printMusicList() {
 		return mList;
 	}
+	
+	public void sortByTitleASC() {
+		int nums[] = { 4, 3, 2, 1 };
+		for (int i = 0; i < mList.size(); i++) {	//삽입정렬
+			for (int e = 0; e < i; e++) {
+				Music mOne = (Music) mList.get(i);
+				Music mTwo = (Music) mList.get(e);
+				if (mOne.getTitle().compareTo(mTwo.getTitle()) < 1) {
+					Music temp = mOne;
+					mList.set(i, mTwo);
+					mList.set(e, temp);
+				}
+			}
+		}
+	}
+
+	public void sortByTitleDESC() {
+		int nums[] = { 4, 3, 2, 1 };
+		for (int i = 0; i < mList.size(); i++) {
+			for (int e = 0; e < i; e++) {
+				Music mOne = (Music) mList.get(i);
+				Music mTwo = (Music) mList.get(e);
+				if (mOne.getTitle().compareTo(mTwo.getTitle()) > 1) {
+					Music temp = mOne;
+					mList.set(i, mTwo);
+					mList.set(e, temp);
+				}
+			}
+		}
+	}
+	
+	public void sortBySingerASC() {
+		int nums[] = { 4, 3, 2, 1 };
+		for (int i = 0; i < mList.size(); i++) {
+			for (int e = 0; e < i; e++) {
+				Music mOne = (Music) mList.get(i);
+				Music mTwo = (Music) mList.get(e);
+				if (mOne.getSinger().compareTo(mTwo.getSinger()) < 1) {
+					Music temp = mOne;
+					mList.set(i, mTwo);
+					mList.set(e, temp);
+				}
+			}
+		}
+		
+		
+		
+	}
+	
+	public void sortBySingerDESC() {
+		int nums[] = { 4, 3, 2, 1 };
+		for (int i = 0; i < mList.size(); i++) {
+			for (int e = 0; e < i; e++) {
+				Music mOne = (Music) mList.get(i);
+				Music mTwo = (Music) mList.get(e);
+				if (mOne.getSinger().compareTo(mTwo.getSinger()) > 1) {
+					Music temp = mOne;
+					mList.set(i, mTwo);
+					mList.set(e, temp);
+				}
+			}
+		}
+		
+		
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
